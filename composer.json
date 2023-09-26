@@ -1,0 +1,23 @@
+{
+    "name": "rmade/gustavo-ramirez",
+    "description": "Proyecto PHP 8, Gulp, MVC, Sass",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Model\\" : "./models",
+            "Controllers\\" : "./controllers",
+            "Classes\\" : "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Raul Madero",
+            "email": "r.madero.ramirez@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
