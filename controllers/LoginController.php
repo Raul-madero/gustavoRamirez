@@ -2,7 +2,6 @@
 namespace Controllers;
 
 use MVC\Router;
-use Model\Admin;
 use Classes\Email;
 use Model\Cliente;
 use Model\Usuario;
@@ -85,18 +84,44 @@ class LoginController {
         
     }
     public static function llenar(Router $router) {
+        $usuario = new Usuario;
         if($_SERVER['REQUEST_METHOD'] === 'GET') {
             $id = $_GET['id'] ?? null;
             $usuario = Usuario::find($id);
         }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            debuguear($_POST);
             $usuario->sincronizar($_POST);
-            $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+            debuguear($usuario);
+            $email = new Email($usuario->nombre, $usuario->correo, $usuario->token);
+            $email->enviarConfirmacion();
+            $resultado = $usuario->guardar();
+            if($resultado) {
+                header('Location: /mensaje');
+            }
         }
         
         $router->render('auth/llenar', [
             'usuario' => $usuario
+        ]);
+    }
+    public static function mensaje(Router $router) {
+        $router->render('auth/mensaje');
+    }
+    public static function confirmar(Router $router) {
+        $alertas = [];
+        $token = s($_GET['token']);
+        $usuario = Usuario::where('token', $token);
+        if(empty($usuario)) {
+            Usuario::setAlerta('error', 'Token no válido');
+        }else {
+            $usuario->confirmado = '1';
+            $usuario->token = null;
+            $usuario->guardar();
+            Usuario::setAlerta('exito', 'Cuenta confirmada');
+        }
+        $alertas = Usuario::getErrores();
+        $router->render('auth/confirmar', [
+            'alertas' => $alertas
         ]);
     }
 }

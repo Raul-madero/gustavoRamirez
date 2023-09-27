@@ -321,11 +321,11 @@ body {
   font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
   line-height: 1.8;
-  background-color: rgb(255, 255, 221);
+  background-color: #ffffdd;
 }
 
 p {
-  color: rgb(41, 32, 22);
+  color: #292016;
   font-size: 2rem;
 }
 
@@ -397,10 +397,15 @@ h4 {
   text-align: center;
 }
 
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
 .alerta {
   padding: 0.5rem;
   text-align: center;
-  color: rgb(255, 255, 221);
+  color: #ffffdd;
   font-weight: bold;
   text-transform: uppercase;
   margin: 1rem 0;
@@ -409,7 +414,7 @@ h4 {
   background-color: red;
 }
 .alerta.exito {
-  background-color: rgb(162, 197, 121);
+  background-color: #a2c579;
 }
 
 @media (min-width: 768px) {
@@ -424,7 +429,7 @@ h4 {
   margin: 0 auto;
 }
 .blog a h2 {
-  color: rgb(41, 32, 22);
+  color: #292016;
 }
 
 .entrada-blog {
@@ -442,11 +447,11 @@ h4 {
 }
 
 .informacion-meta span {
-  color: rgb(1, 106, 112);
+  color: #016a70;
 }
 
 .texto-entrada a {
-  color: rgb(41, 32, 22);
+  color: #292016;
   margin-top: 2rem;
   display: block;
 }
@@ -464,14 +469,14 @@ h4 {
   display: block;
   width: 15rem;
   height: 0.5rem;
-  background-color: rgb(1, 106, 112);
+  background-color: #016a70;
   margin-top: 1rem;
 }
 
 .boton-verde {
-  background-color: rgb(162, 197, 121);
+  background-color: #a2c579;
   padding: 1.5rem 4rem;
-  color: rgb(255, 255, 221);
+  color: #ffffdd;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
@@ -487,9 +492,9 @@ h4 {
 }
 
 .boton-cafe {
-  background-color: rgb(210, 222, 50);
+  background-color: #d2de32;
   padding: 1.5rem 4rem;
-  color: rgb(1, 106, 112);
+  color: #016a70;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
@@ -508,7 +513,7 @@ h4 {
   font-size: 3.6rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: rgb(1, 106, 112);
+  color: #016a70;
 }
 
 .contenedor-descripciones {
@@ -547,22 +552,22 @@ h4 {
   padding: 1rem 0;
 }
 .card h2 {
-  color: rgb(255, 255, 221);
+  color: #ffffdd;
   font-size: 2rem;
   margin: 0;
   padding: 0;
 }
 .card-calculadora {
-  background-color: rgb(1, 106, 112);
+  background-color: #016a70;
 }
 .card-atomo {
-  background-color: rgb(162, 197, 121);
+  background-color: #a2c579;
 }
 .card-atomo h2 {
-  color: rgb(1, 106, 112);
+  color: #016a70;
 }
 .card-dollar {
-  background-color: rgb(1, 106, 112);
+  background-color: #016a70;
 }
 
 .footer {
@@ -572,7 +577,7 @@ h4 {
   align-items: center;
   gap: 2rem;
   height: 40rem;
-  background-color: rgb(1, 106, 112);
+  background-color: #016a70;
   padding: 2rem;
 }
 .footer .logo__footer {
@@ -581,7 +586,7 @@ h4 {
 }
 .footer p {
   font-size: 3.2rem;
-  color: rgb(255, 255, 221);
+  color: #ffffdd;
   font-weight: bold;
 }
 
@@ -590,12 +595,12 @@ h4 {
 }
 .formulario p {
   font-size: 1.4rem;
-  color: rgb(41, 32, 22);
+  color: #292016;
   margin: 2rem 0 0 0;
 }
 .formulario legend {
   font-size: 2rem;
-  color: rgb(41, 32, 22);
+  color: #292016;
 }
 .formulario label {
   font-weight: bold;
@@ -608,8 +613,8 @@ h4 {
   padding: 1rem;
   display: block;
   width: 100%;
-  background-color: rgb(255, 255, 221);
-  border: 1px solid rgb(1, 106, 112);
+  background-color: #ffffdd;
+  border: 1px solid #016a70;
   border-radius: 1rem;
   margin-bottom: 2rem;
 }
@@ -641,9 +646,9 @@ h4 {
 }
 
 .boton {
-  background-color: rgb(162, 197, 121);
+  background-color: #a2c579;
   padding: 1.5rem 4rem;
-  color: rgb(255, 255, 221);
+  color: #ffffdd;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
@@ -659,10 +664,13 @@ h4 {
 }
 
 .acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 5rem auto;
 }
 .acciones a {
-  color: rgb(41, 32, 22);
+  color: #292016;
   font-weight: bold;
   display: block;
 }
@@ -678,7 +686,7 @@ h4 {
   height: 5rem;
   width: 100%;
   margin: 0;
-  background-image: linear-gradient(45deg, rgb(162, 197, 121), rgb(1, 106, 112));
+  background-image: linear-gradient(45deg, #a2c579, #016a70);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -717,7 +725,7 @@ h4 {
     list-style: none;
   }
   .nav-container .menu-desktop .main-nav .nav-item a {
-    color: rgb(255, 255, 221);
+    color: #ffffdd;
     font-size: 1.6rem;
   }
 }
@@ -746,13 +754,13 @@ h4 {
   width: 100%;
   height: 100%;
   min-height: 30rem;
-  background-color: rgb(1, 106, 112);
+  background-color: #016a70;
   opacity: 0.5;
 }
 
 .hero-title {
   font-family: "Playfair Display", serif;
-  color: rgb(41, 32, 22);
+  color: #292016;
   opacity: 0.9;
   font-weight: 700;
   line-height: 1;
@@ -765,7 +773,7 @@ h4 {
   z-index: 10;
   height: 80rem;
   padding: 4rem;
-  background-color: rgb(210, 222, 50);
+  background-color: #d2de32;
   opacity: 1;
 }
 .mobile-menu ul {
@@ -779,13 +787,8 @@ h4 {
 .mobile-menu ul li a {
   font-size: 2.4rem;
   font-family: "Playfair Display", serif;
-  color: rgb(41, 32, 22);
+  color: #292016;
   font-weight: bold;
-}
-
-.hidden {
-  display: none;
-  opacity: 0;
 }
 
 .paginador {
@@ -806,12 +809,12 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(162, 197, 121);
+  color: #a2c579;
   font-weight: bold;
   font-size: 2rem;
 }
 .paginador .flechas li svg {
-  fill: rgb(162, 197, 121);
+  fill: #a2c579;
 }
 
 .servicios {
@@ -819,7 +822,7 @@ h4 {
 }
 .servicios h2 {
   font-family: "Playfair Display", serif;
-  color: rgb(41, 32, 22);
+  color: #292016;
   font-size: 3.4rem;
   font-weight: bold;
 }
@@ -843,7 +846,7 @@ h4 {
   align-items: center;
   width: 30rem;
   height: 25rem;
-  border: solid 0.4rem rgb(210, 222, 50);
+  border: solid 0.4rem #d2de32;
   border-radius: 2rem;
   box-shadow: -1.6rem -1.6rem 0.8rem #b8b8b8;
 }
@@ -856,18 +859,18 @@ h4 {
 }
 .servicios .servicio p {
   font-size: 2.4rem;
-  color: rgb(1, 106, 112);
+  color: #016a70;
 }
 
 .somos {
   display: flex;
   flex-direction: column;
   margin: 75rem auto 0 auto;
-  background-color: rgb(162, 197, 121);
-  background-image: linear-gradient(180deg, rgb(162, 197, 121) 0%, rgb(1, 106, 112) 57%);
+  background-color: #a2c579;
+  background-image: linear-gradient(180deg, #a2c579 0%, #016a70 57%);
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 0.4rem 1.6rem 0.4rem rgb(162, 197, 121);
+  box-shadow: 0 0.4rem 1.6rem 0.4rem #a2c579;
 }
 @media (min-width: 768px) {
   .somos {
@@ -895,11 +898,11 @@ h4 {
   font-size: 2.4rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: rgb(1, 106, 112);
+  color: #016a70;
   text-transform: uppercase;
 }
 .somos__info p {
-  color: rgb(41, 32, 22);
+  color: #292016;
 }
 
 table.clientes {
@@ -908,10 +911,10 @@ table.clientes {
   border-spacing: 0;
 }
 table.clientes thead {
-  background-color: rgb(1, 106, 112);
+  background-color: #016a70;
 }
 table.clientes thead th {
-  color: rgb(255, 255, 221);
+  color: #ffffdd;
   padding: 2rem;
 }
 
@@ -928,7 +931,7 @@ table.clientes thead th {
   margin: 0.2rem;
   width: 100%;
   height: 2rem;
-  border: 0.1rem solid rgb(41, 32, 22);
+  border: 0.1rem solid #292016;
   font-size: 1rem;
   line-height: 1;
   padding: 0.2rem;
@@ -949,7 +952,7 @@ table.clientes thead th {
   font-size: 4.6rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: rgb(41, 32, 22);
+  color: #292016;
 }
 .heading-equipo .info-equipo {
   width: 30%;
@@ -958,12 +961,12 @@ table.clientes thead th {
 .heading-equipo .info-equipo h2 {
   font-size: 3.2rem;
   font-weight: bold;
-  color: rgb(41, 32, 22);
+  color: #292016;
 }
 .heading-equipo .info-equipo p {
   font-size: 2.4rem;
   font-weight: 400;
-  color: rgb(41, 32, 22);
+  color: #292016;
   opacity: 0.7;
 }
 
@@ -985,7 +988,7 @@ table.clientes thead th {
 .equipo-card__name {
   font-size: 2rem;
   font-weight: bold;
-  color: rgb(41, 32, 22);
+  color: #292016;
   margin: 0.5rem 0 0 0;
 }
 .equipo-card__post {
@@ -995,7 +998,7 @@ table.clientes thead th {
   rotate: 90deg;
   font-size: 1.8rem;
   font-weight: 400;
-  color: rgb(41, 32, 22);
+  color: #292016;
   opacity: 0.5;
 }
 
@@ -1020,10 +1023,10 @@ table.clientes thead th {
   font-family: "Playfair Display", serif;
   font-size: 3.2rem;
   font-weight: bold;
-  color: rgb(210, 222, 50);
-  background-color: rgb(1, 106, 112);
+  color: #d2de32;
+  background-color: #016a70;
   border-radius: 1.6rem;
-  box-shadow: 0.8rem 0.2rem 0.4rem 0.2rem rgb(1, 106, 112);
+  box-shadow: 0.8rem 0.2rem 0.4rem 0.2rem #016a70;
   max-width: 90%;
 }
 
@@ -1045,13 +1048,13 @@ table.clientes thead th {
   font-family: "Playfair Display", serif;
   font-size: 3.2rem;
   font-weight: bold;
-  color: rgb(41, 32, 22);
+  color: #292016;
 }
 
 .boton-equipo {
-  background-color: rgb(162, 197, 121);
+  background-color: #a2c579;
   padding: 1.5rem 4rem;
-  color: rgb(255, 255, 221);
+  color: #ffffdd;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
@@ -1062,7 +1065,7 @@ table.clientes thead th {
   display: block;
   width: 30rem;
   margin: 1rem auto;
-  color: rgb(41, 32, 22);
+  color: #292016;
   text-transform: uppercase;
 }
 .boton-equipo:hover {

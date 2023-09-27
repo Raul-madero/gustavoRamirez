@@ -67,4 +67,10 @@ class Usuario extends ActiveRecord {
             return true;
         }
     }
+    public static function autenticar() {
+        session_start();
+        $_SESSION['usuario'] = $this->rfc;
+        $_SESSION['login'] = true;
+        header('Location: /crear');
+    }
 }

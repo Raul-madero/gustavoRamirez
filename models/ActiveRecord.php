@@ -19,6 +19,9 @@ class ActiveRecord {
     }
 
     // Validación
+    public static function setAlerta($tipo, $mensaje) {
+        static::$alertas[$tipo][] = $mensaje;
+    }
     public static function getErrores() {
         return static::$alertas;
     }

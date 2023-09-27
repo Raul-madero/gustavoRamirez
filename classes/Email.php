@@ -2,13 +2,15 @@
 
 namespace Classes;
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 class Email {
-    public $email;
+    public $correo;
     public $nombre;
     public $token;
-    public function __construct($email, $nombre, $token)
+    public function __construct($correo, $nombre, $token)
     {
-        $this->email = $email;
+        $this->correo = $correo;
         $this->nombre = $nombre;
         $this->token = $token;
     }
@@ -32,7 +34,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has creado tu cuenta en AppSalon, solo debes confirmarla en el siguiente enlace: </p>";
-        $contenido .= "<a href='http://localhost:8080/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
+        $contenido .= "<a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
         $contenido .= "<p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido .= "</html>";
         $mail->Body = $contenido;
