@@ -4,6 +4,7 @@
         <img src="./img/logoNegro.svg" alt="">
     </picture>
     <?php include_once __DIR__ . "/../templates/alertas.php" ?>
+    <h1 class="nombre-pagina">Crear nuevo Usuario</h1>
     <div class="campo">
     <label for="usuario">RFC:</label>
     <input 

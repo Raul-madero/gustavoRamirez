@@ -3,6 +3,7 @@
     <picture>
         <img src="./img/logoNegro.svg" alt="">
     </picture>
+    <h1 class="nombre-pagina">Ingresa a tu cuenta</h1>
     <?php include_once __DIR__ . "/../templates/alertas.php" ?>
     <div class="campo">
     <label for="usuario">RFC:</label>

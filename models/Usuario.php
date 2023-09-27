@@ -35,18 +35,36 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas;
     }
-    public function existeUsuario() {
-        $query = "SELECT * FROM " . self::$tabla . " WHERE rfc = '" . $this->rfc . "' LIMIT 1";
-        $resultado = self::$db->query($query);
-        if($resultado->num_rows) {
-            self::$alertas['error'][] = 'El usuario ya esta registrado';
+    public function validarInformacionAdicional() {
+        if(!$this->nombre) {
+            self::$alertas['error'][] = 'El nombre es obligatorio'; 
         }
-        return $resultado;
+        if(!$this->rfc) {
+            self::$alertas['error'][] = 'El RFC es obligatorio'; 
+        }
+        if(!$this->correo) {
+            self::$alertas['error'][] = 'El correo es obligatorio'; 
+        }
+        if(!$this->password) {
+            self::$alertas['error'][] = 'La contraseña es obligatoria'; 
+        }
+        if(!$this->telefono) {
+            self::$alertas['error'][] = 'El telefono es obligatorio'; 
+        }
+        return self::$alertas;
     }
     public function hashPassword() {
-        $this->password = password_hash($this->$passwordRaw, PASSWORD_BCRYPT);
+        $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }
     public function crearToken() {
         $this->token = uniqid();
+    }
+    public function verificarPassword($password) {
+        $resultado = password_verify($password, $this->password);
+        if(!$resultado) {
+            self::$alertas['error'][] = 'La contraseña no es correcta';
+        }else {
+            return true;
+        }
     }
 }

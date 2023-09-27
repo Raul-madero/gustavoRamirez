@@ -10,20 +10,30 @@ use Model\Usuario;
 class LoginController {
     public static function login(Router $router) {
         $alertas = [];
+        $resultado;
+        if($_GET['resultado']) {
+            $resultado = $_GET['resultado'];
+            if($resultado === '1') {
+                $alertas['exito'][] = 'El usuario fue creado correctamente'; 
+            }
+        }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $auth = new Admin($_POST);
+            $auth = new Usuario($_POST);
             $alertas = $auth->validar();
             if(empty($alertas)) {
-                $resultado = $auth->existeUsuario();
-                if(!$resultado) {
-                    $alertas = Admin::getErrores();
-                }else {
-                    $autenticado = $auth->verificarPassword($resultado);
-                    debuguear($autenticado);
-                    if($autenticado) {
-                        $auth->autenticar();
-                    }else {
-                        $alertas = Admin::getErrores();
+                $usuario = Usuario::where('rfc', $auth->rfc);
+                if($usuario) {
+                    if($usuario->verificarPassword($auth->password)) {
+                        session_start();
+                        $_SESSION['id'] = $usuario->id;
+                        $_SESSION['nombre'] = $usuario->nombre;
+                        $_SESSION['correo'] = $usuario->correo ?? null;
+                        $_SESSION['rfc'] = $usuario->rfc;
+                        $_SESSION['login'] = true;
+                        if(!$_SESSION['correo']) {
+                            $id = $usuario->id;
+                            header("Location: /crear?id=${id}");
+                        }
                     }
                 }
             }
@@ -38,11 +48,6 @@ class LoginController {
     public static function crear(Router $router) {
         $usuario = new Usuario;
         $alertas = [];
-        if($_GET['resultado']) {
-            if($_GET['resultado'] === '1') {
-                $alertas['exito'][] = 'El usuario fue creado correctamente'; 
-            }
-        }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario->sincronizar($_POST);
             $alertas = $usuario->validar();
@@ -59,8 +64,9 @@ class LoginController {
                     $usuario->hashPassword();
                     $usuario->crearToken();
                     $resultado = $usuario->guardar();
+                    debuguear($resultado);
                     if($resultado) {
-                        echo 'Guardado correctamente';
+                        header('Location: /login?resultado=1');
                     }
                     
                 }
@@ -77,5 +83,20 @@ class LoginController {
     }
     public static function recuperar(Router $router) {
         
+    }
+    public static function llenar(Router $router) {
+        if($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id = $_GET['id'] ?? null;
+            $usuario = Usuario::find($id);
+        }
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            debuguear($_POST);
+            $usuario->sincronizar($_POST);
+            $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+        }
+        
+        $router->render('auth/llenar', [
+            'usuario' => $usuario
+        ]);
     }
 }

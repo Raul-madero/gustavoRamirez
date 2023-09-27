@@ -43,17 +43,6 @@ class Admin extends ActiveRecord {
             ];
         } 
     }
-
-    public function verificarPassword($resultado) {
-        $usuario = $resultado->fetch_object();
-        $autenticado = password_verify($this->password, $usuario->password);
-        debuguear($autenticado);
-        if(!$autenticado) {
-            self::$alertas['error'][] = 'Password Incorrecto';
-        }else {
-            return $autenticado;
-        }
-    }
     public static function autenticar() {
         session_start();
         $_SESSION['usuario'] = $this->rfc;
