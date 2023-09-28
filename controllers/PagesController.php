@@ -6,7 +6,6 @@ use Model\Colaborador;
 
 class PagesController {
     public static function index(Router $router) {
-
         $router->render('paginas/index');
     }
     public static function nosotros(Router $router) {

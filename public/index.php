@@ -14,8 +14,8 @@ $router->post('/crear-usuario', [LoginController::class, 'crear']);
 $router->get('/usuarios', [LoginController::class, 'login']);
 $router->get('/login', [LoginController::class, 'login']);
 $router->post('/login', [LoginController::class, 'login']);
-$router->get('/crear', [LoginController::class, 'llenar']);
-$router->post('/crear', [LoginController::class, 'llenar']);
+$router->get('/llenar', [LoginController::class, 'llenar']);
+$router->post('/llenar', [LoginController::class, 'llenar']);
 $router->get('/mensaje', [LoginController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
 $router->get('/logout', [LoginController::class, 'logout']);
@@ -31,6 +31,7 @@ $router->get('/blog', [PagesController::class, 'blog']);
 $router->get('/equipo', [PagesController::class, 'equipo']);
 $router->get('/contacto', [PagesController::class, 'contacto']);
 $router->get('/servicios', [PagesController::class, 'servicios']);
+$router->get('/interfaz', [PagesController::class, 'interfaz']);
 
 //Clientes
 $router->get('/clientes', [ClientesController::class, 'index']);

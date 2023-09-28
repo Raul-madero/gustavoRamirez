@@ -1,7 +1,7 @@
 <h1 class="nombre-pagina">Información</h1>
 <p class="descripcion-pagina">Completa tu información llenando el siguiente formulario</p>
 <?php include_once __DIR__ . "/../templates/alertas.php" ?>
-<form action="/crear" method="POST" class="formulario login-form">
+<form action="/llenar" method="POST" class="formulario login-form">
 <div class="campo">
         <label for="nombre">Nombre/Razón Social:</label>
         <input 
@@ -18,7 +18,8 @@
             id="rfc"
             name="rfc"
             placeholder="Tu RFC"
-            value="<?php echo $usuario->rfc ?>">
+            value="<?php echo $usuario->rfc ?>"
+            readonly>
     </div>
     <div class="campo">
         <label for="correo">Email:</label>
@@ -46,6 +47,7 @@
             placeholder="Tu telefono"
             value="<?php echo $usuario->telefono ?>">
     </div>
+        <input type="submit" value="Enviar" class="boton">
         <input 
             type="text"
             id="id"
@@ -67,5 +69,4 @@
             value="<?php echo $usuario->admin ?>"
             class="hidden"
         >
-        <input type="submit" value="Enviar" class="boton">
 </form>

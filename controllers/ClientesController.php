@@ -6,6 +6,7 @@ use Model\Colaborador;
 class ClientesController {
     public static function index(Router $router) {
         $totalClientes = count(Cliente::all());
+        $admin = $_GET['nombre'];
         $pagina = $_GET['pagina'];
         if(!$pagina || $pagina < 0) {
             $pagina = '0';
@@ -33,7 +34,8 @@ class ClientesController {
             'clientes' => $clientes,
             'resultado' => $resultado,
             'alertas' => $alertas,
-            'pagina' => $pagina
+            'pagina' => $pagina,
+            'admin'=> $admin
         ]);
     }
     public static function anterior() {
@@ -58,7 +60,7 @@ class ClientesController {
         $router->render('admin/crear', [
             'colaboradores' => $colaboradores,
             'alertas' => $alertas,
-            'cliente' => $cliente
+            'cliente' => $cliente,
         ]);
     }
     public static function actualizar(Router $router) {

@@ -32,13 +32,15 @@ class ActiveRecord {
 
     // Registros - CRUD
     public function guardar() {
+        $resultado;
         if(!is_null($this->id)) {
             // actualizar
-            $this->actualizar();
+            $resultado = $this->actualizar();
         } else {
             // Creando un nuevo registro
-            $this->crear();
+            $resultado = $this->crear();
         }
+        return $resultado;
     }
 
     public static function all() {
@@ -88,11 +90,7 @@ class ActiveRecord {
         $query .= "'); ";
         // Resultado de la consulta
         $resultado = self::$db->query($query);
-        // Mensaje de exito
-        if($resultado) {
-            // Redireccionar al usuario.
-            header('Location: /' . static::$tabla . '?resultado=1');
-        }
+        return $resultado;
     }
 
     public function actualizar() {
@@ -111,7 +109,7 @@ class ActiveRecord {
         $resultado = self::$db->query($query);
         if($resultado) {
             // Redireccionar al usuario.
-            header('Location: /' . static::$tabla . '?resultado=2');
+            return $resultado;
         }
     }
 
@@ -121,7 +119,7 @@ class ActiveRecord {
         $query = "DELETE FROM "  . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1;";
         $resultado = self::$db->query($query);
         if($resultado) {
-            header('location: /' . static::$tabla . '?resultado=3');
+            return $resultado;
         }
     }
 

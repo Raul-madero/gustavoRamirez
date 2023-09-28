@@ -53,6 +53,14 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas;
     }
+    public function existeUsuario() {
+        $query = "SELECT * FROM " . self::$tabla . " WHERE rfc = '" . $this->rfc . "' LIMIT 1";
+        $resultado = self::$db->query($query);
+        if($resultado->num_rows) {
+            self::$alertas['error'][] = 'El usuario ya existe';
+        }
+        return $resultado;
+    }
     public function hashPassword() {
         $this->password = password_hash($this->password, PASSWORD_BCRYPT);
     }

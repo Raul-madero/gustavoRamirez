@@ -1,7 +1,7 @@
 <main class="contenedor seccion">
         <h1>Administrador de Clientes</h1>
         <?php include_once __DIR__ . "/../templates/alertas.php" ?>
-
+        <h2><?php echo $admin; ?></h2>
         <a href="/crear" class="boton boton-verde">Nuevo Cliente</a>
 
         <h2>Clientes</h2>
@@ -41,10 +41,10 @@
         <div class="contenedor paginador">
             <ul class="flechas">
                 <li>
-                    <a href="/clientes-anterior?pagina=<?php echo $pagina; ?>"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg> Anterior</a>
+                    <a href="/clientes-anterior?pagina=<?php echo $pagina; ?>?nombre=<?php echo $admin; ?>"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"/></svg> Anterior</a>
                 </li>
                 <li>
-                    <a href="/clientes-siguiente?pagina=<?php echo $pagina; ?>"> Siguiente <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg></a>
+                    <a href="/clientes-siguiente?pagina=<?php echo $pagina; ?>?nombre=<?php echo $admin; ?>"> Siguiente <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"/></svg></a>
                 </li>
             </ul>
         </div>

@@ -31,7 +31,16 @@ class LoginController {
                         $_SESSION['login'] = true;
                         if(!$_SESSION['correo']) {
                             $id = $usuario->id;
-                            header("Location: /crear?id=${id}");
+                            header("Location: /llenar?id=${id}");
+                        }else if(!$usuario->verificado) {
+                            $alertas['error'][] = 'Por favor verifica tu cuenta';
+                        }
+                        if($usuario->admin) {
+                            $_SESSION['admin'] = $usuario->admin ?? null;
+                            $nombre = $usuario->nombre;
+                            header("Location: /clientes?nombre=${nombre}");
+                        }else {
+                            header('Location: /interfaz');
                         }
                     }
                 }
@@ -63,11 +72,9 @@ class LoginController {
                     $usuario->hashPassword();
                     $usuario->crearToken();
                     $resultado = $usuario->guardar();
-                    debuguear($resultado);
                     if($resultado) {
                         header('Location: /login?resultado=1');
                     }
-                    
                 }
             }
         }
@@ -91,7 +98,7 @@ class LoginController {
         }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario->sincronizar($_POST);
-            debuguear($usuario);
+            $usuario->hashPassword();
             $email = new Email($usuario->nombre, $usuario->correo, $usuario->token);
             $email->enviarConfirmacion();
             $resultado = $usuario->guardar();
@@ -99,7 +106,6 @@ class LoginController {
                 header('Location: /mensaje');
             }
         }
-        
         $router->render('auth/llenar', [
             'usuario' => $usuario
         ]);
@@ -114,10 +120,12 @@ class LoginController {
         if(empty($usuario)) {
             Usuario::setAlerta('error', 'Token no válido');
         }else {
-            $usuario->confirmado = '1';
+            $usuario->verificado = '1';
             $usuario->token = null;
-            $usuario->guardar();
-            Usuario::setAlerta('exito', 'Cuenta confirmada');
+            $resultado = $usuario->guardar();
+            if($resultado) {
+                Usuario::setAlerta('exito', 'Cuenta confirmada');
+            }
         }
         $alertas = Usuario::getErrores();
         $router->render('auth/confirmar', [

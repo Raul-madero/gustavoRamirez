@@ -1,10 +1,9 @@
-
+<picture class="picture">
+    <img src="./img/logoNegro.svg" alt="">
+</picture>
+<?php include_once __DIR__ . "/../templates/alertas.php" ?>
+<h1 class="nombre-pagina">Ingresa a tu cuenta</h1>
 <form class="formulario login-form" action="/login" method="POST">
-    <picture>
-        <img src="./img/logoNegro.svg" alt="">
-    </picture>
-    <h1 class="nombre-pagina">Ingresa a tu cuenta</h1>
-    <?php include_once __DIR__ . "/../templates/alertas.php" ?>
     <div class="campo">
     <label for="usuario">RFC:</label>
     <input 
