@@ -53,6 +53,12 @@ class Usuario extends ActiveRecord {
         }
         return self::$alertas;
     }
+    public function validarRFC($rfc) {
+        if(!$this->rfc) {
+            self::$alertas['error'][] = 'El rfc es obligatorio';
+        }
+        return self::$alertas;
+    }
     public function existeUsuario() {
         $query = "SELECT * FROM " . self::$tabla . " WHERE rfc = '" . $this->rfc . "' LIMIT 1";
         $resultado = self::$db->query($query);

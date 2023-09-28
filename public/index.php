@@ -18,6 +18,8 @@ $router->get('/llenar', [LoginController::class, 'llenar']);
 $router->post('/llenar', [LoginController::class, 'llenar']);
 $router->get('/mensaje', [LoginController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
+$router->get('/olvide', [LoginController::class, 'olvide']);
+$router->post('/olvide', [LoginController::class, 'olvide']);
 $router->get('/logout', [LoginController::class, 'logout']);
 
 // //Crear cuenta

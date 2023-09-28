@@ -84,8 +84,24 @@ class LoginController {
         ]);
     }
     public static function olvide(Router $router) {
-        
-        $router->render('auth/olvide-password');
+        $alertas = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $auth = new Usuario($_POST);
+            $alertas = $auth->validarRFC($auth->rfc);
+            if(empty($alertas)) {
+                $usuario = Usuario::where('rfc', $auth->rfc);
+                if(!$usuario || !$usuario->verificado) {
+                    Usuario::setAlerta('error', 'La cuenta proporcionada no existe o no esta verificada');
+                    $alertas = Usuario::getErrores();
+                }else {
+                    $usuario->crearToken();
+                    debuguear($usuario);
+                }
+            }
+        }
+        $router->render('auth/olvide-password', [
+            'alertas' => $alertas        
+        ]);
     }
     public static function recuperar(Router $router) {
         
