@@ -9,22 +9,24 @@ use Controllers\ClientesController;
 
 $router = new Router();
 //Iniciar Sesión
-$router->get('/crear-usuario', [LoginController::class, 'crear']);
-$router->post('/crear-usuario', [LoginController::class, 'crear']);
 $router->get('/usuarios', [LoginController::class, 'login']);
 $router->get('/login', [LoginController::class, 'login']);
 $router->post('/login', [LoginController::class, 'login']);
+$router->get('/logout', [LoginController::class, 'logout']);
+
+//Recuperar Contraseña
+$router->get('/olvide', [LoginController::class, 'olvide']);
+$router->post('/olvide', [LoginController::class, 'olvide']);
+$router->get('/olvide', [LoginController::class, 'olvide']);
+$router->post('/olvide', [LoginController::class, 'olvide']);
+
+//Crear cuenta
+$router->get('/crear-usuario', [LoginController::class, 'crear']);
+$router->post('/crear-usuario', [LoginController::class, 'crear']);
 $router->get('/llenar', [LoginController::class, 'llenar']);
 $router->post('/llenar', [LoginController::class, 'llenar']);
 $router->get('/mensaje', [LoginController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
-$router->get('/olvide', [LoginController::class, 'olvide']);
-$router->post('/olvide', [LoginController::class, 'olvide']);
-$router->get('/logout', [LoginController::class, 'logout']);
-
-// //Crear cuenta
-// $router->get('/crear-cuenta', [LoginController::class, 'crear']);
-// $router->post('/crear-cuenta', [LoginController::class, 'crear']);
 
 //Paginas
 $router->get('/', [PagesController::class, 'index']);

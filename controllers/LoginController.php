@@ -92,13 +92,17 @@ class LoginController {
                 $usuario = Usuario::where('rfc', $auth->rfc);
                 if(!$usuario || !$usuario->verificado) {
                     Usuario::setAlerta('error', 'La cuenta proporcionada no existe o no esta verificada');
-                    $alertas = Usuario::getErrores();
                 }else {
                     $usuario->crearToken();
-                    debuguear($usuario);
+                    $usuario->guardar();
+                    $email = new Email($usuario->nombre, $usuario->correo, $usuario->token);
+                    $email->recuperarPassword();
+                    Usuario::setAlerta('exito', 'Se han enviado las instrucciones para reestablecer tu contraseña a tu correo');
                 }
             }
         }
+
+        $alertas = Usuario::getErrores();
         $router->render('auth/olvide-password', [
             'alertas' => $alertas        
         ]);
