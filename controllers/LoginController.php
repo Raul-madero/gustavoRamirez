@@ -108,7 +108,7 @@ class LoginController {
         ]);
     }
     public static function recuperar(Router $router) {
-        
+        $router->render('auth/recuperar');
     }
     public static function llenar(Router $router) {
         $usuario = new Usuario;
