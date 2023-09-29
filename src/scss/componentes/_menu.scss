@@ -1,0 +1,27 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.mobile-menu {
+    position: absolute;
+    min-width: 30rem;
+    width: 100%;
+    z-index: 10;
+    height: 80rem;
+    padding: 4rem;
+    background-color: v.$calido;
+    opacity: 1;
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        li a {
+            font-size: 2.4rem;
+            font-family: v.$fuente_titulos;
+            color: v.$negro;
+            font-weight: bold;
+        }
+    }
+
+}

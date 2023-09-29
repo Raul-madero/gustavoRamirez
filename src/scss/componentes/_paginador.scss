@@ -1,0 +1,27 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.paginador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: 2rem auto;
+    .flechas {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        align-items: center;
+        gap: 5rem;
+        li a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: v.$verde;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        li svg {
+            fill: v.$verde;
+        }
+    }
+}

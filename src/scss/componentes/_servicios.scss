@@ -1,0 +1,44 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.servicios {
+    margin: 5rem auto;
+    h2 {
+        font-family: v.$fuente_titulos;
+        color: v.$negro;
+        font-size: 3.4rem;
+        font-weight: bold;
+    }
+    .servicio__contenedor {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        margin: 2rem auto;
+        @include m.tablet {
+            flex-direction: row;
+        }
+    }
+    .servicio {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30rem;
+        height: 25rem;
+        border: solid .4rem v.$calido;
+        border-radius: 2rem;
+        box-shadow: -1.6rem -1.6rem .8rem #b8b8b8;
+        &__imagen {
+            width: 9rem;
+            height: 12rem;
+            &-auditoria {
+                width: 20rem;
+            }
+        }
+        p {
+            font-size: 2.4rem;
+            color: v.$azul;
+        }
+    }
+}

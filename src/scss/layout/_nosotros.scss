@@ -1,0 +1,51 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.imagen-nosotros {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    width: 80%;
+    height: 50rem;
+    background-image: url('../img/nosotros.webp');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    h2 {
+        padding: 2rem;
+        font-family: v.$fuente_titulos;
+        font-size: 3.2rem;
+        font-weight: bold;
+        color: v.$calido;
+        background-color: v.$azul;
+        border-radius: 1.6rem;
+        box-shadow: .8rem .2rem .4rem .2rem v.$azul;
+        max-width: 90%;
+    }
+}
+.imagen-blog {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    width: 50%;
+    height: 50rem;
+    background-image: url('../img/interes.webp');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.titulo-blog {
+    padding: 2rem;
+    font-family: v.$fuente_titulos;
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: v.$negro;
+}
+.boton-equipo {
+    @include m.boton(v.$verde, v.$claro);
+    width: 30rem;
+    margin: 1rem auto;
+    color: v.$negro;
+    text-transform: uppercase;
+}

@@ -1,0 +1,9 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.boton-verde {
+    @include m.boton(v.$verde, v.$claro);
+}
+
+.boton-cafe {
+    @include m.boton(v.$calido, v.$azul);
+}

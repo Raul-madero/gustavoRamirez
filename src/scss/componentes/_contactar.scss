@@ -1,0 +1,10 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.seccion-contacto {
+    h1 {
+        font-size: 3.6rem;
+        font-family: v.$fuente_titulos;
+        font-weight: bold;
+        color: v.$azul;
+    }
+}

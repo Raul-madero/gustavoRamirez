@@ -1,0 +1,48 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+    margin: 0;
+    background-image: linear-gradient(45deg, v.$verde, v.$azul);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 4px #adadad;
+}
+.logo {
+    width: 20rem;
+    margin-inline-start: 1rem;
+}
+.nav-container {
+    display: flex;
+    place-items: center;
+    margin-inline-end: 1rem;
+    .menu-mobile {
+        @include m.tablet {
+            display: none;
+        }
+        img {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+    .menu-desktop {
+        display: none;
+        @include m.tablet {
+            display: flex;
+            .main-nav {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+                .nav-item a {
+                    color: v.$claro;
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+}

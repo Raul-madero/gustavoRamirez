@@ -1,0 +1,40 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.somos {
+    display: flex;
+    flex-direction: column;
+    margin: 75rem auto 0 auto;
+    background-color: v.$verde;
+    background-image: linear-gradient(180deg, v.$verde 0%, v.$azul 57%);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 .4rem 1.6rem .4rem v.$verde;
+    @include m.tablet {
+        @include m.grid(3, 2rem);
+        margin: 25rem auto 0 auto;
+    }
+    &__imagen {
+        height: 30rem;
+        background-image: url('../img/quienesSomos.webp');
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 3rem;
+        @include m.tablet {
+            height: 60rem;
+            grid-column: 1 / 3;
+        }
+    }
+    &__info {
+        h3 {
+            font-size: 2.4rem;
+            font-family: v.$fuente_titulos;
+            font-weight: bold;
+            color: v.$azul;
+            text-transform: uppercase;
+        }
+        p {
+            color: v.$negro;
+        }
+    }
+}

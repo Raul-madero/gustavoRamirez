@@ -1,0 +1,59 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.seccion {
+    margin-top: calc(v.$separacion / 2);
+    margin-bottom: calc(v.$separacion / 2);
+}
+.contenido-centrado {
+    max-width: 80rem;
+}
+
+.alinear-derecha {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.w-100 {
+    width: 100%;
+}
+.nombre-pagina {
+    margin: 0;
+    font-family: v.$fuente_titulos;
+    text-align: center;
+    font-weight: v.$bold;
+}
+.descripcion-pagina {
+    text-align: center;
+}
+.hidden {
+    display: none;
+    opacity: 0;
+}
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: v.$separacion;
+    margin: v.$separacion auto;
+    a{
+        color: v.$negro;
+        font-weight: bold;
+        display: block;
+    }
+}
+.esadmin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(v.$separacion / 2);
+}
+.picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10rem;
+    img {
+        width: 30%;
+    }
+}

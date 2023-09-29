@@ -1,0 +1,63 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.heading-equipo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin: 2rem auto;
+    .titulo-equipo {
+        font-size: 4.6rem;
+        font-family: v.$fuente_titulos;
+        font-weight: bold;
+        color: v.$negro;
+    }
+    .info-equipo {
+        width: 30%;
+        margin: 0 auto;
+        h2 {
+            font-size: 3.2rem;
+            font-weight: bold;
+            color: v.$negro;
+        }
+        p {
+            font-size: 2.4rem;
+            font-weight: 400;
+            color: v.$negro;
+            opacity: .7;
+        }
+    }
+}
+.equipo-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.equipo-card {
+    position: relative;
+    height: 38rem;
+    width: 26rem;
+    margin-block-end: 2rem;
+    &__image {
+        width: 20rem;
+        height: 30rem;
+    }
+    &__name {
+        font-size: 2rem;
+        font-weight: bold;
+        color: v.$negro;
+        margin: .5rem 0 0 0;
+    }
+    &__post {
+        position: absolute;
+        top: .5rem;
+        right: -.3rem;
+        rotate: 90deg;
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: v.$negro;
+        opacity: .5;
+    }
+}
+.equipo-card:nth-child(2), .equipo-card:nth-child(5) {
+    margin-top: 4rem;
+}

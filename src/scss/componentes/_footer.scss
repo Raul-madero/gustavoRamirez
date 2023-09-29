@@ -1,0 +1,21 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    height: 40rem;
+    background-color: v.$azul;
+    padding: 2rem;
+    .logo__footer {
+        width: 100%;
+        max-width: 68rem;
+    }
+    p {
+        font-size: 3.2rem;
+        color: v.$claro;
+        font-weight: bold;
+    }
+}
