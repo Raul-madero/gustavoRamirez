@@ -9,11 +9,13 @@ use Model\Usuario;
 class LoginController {
     public static function login(Router $router) {
         $alertas = [];
-        $resultado;
+        $resultado = null;
         if($_GET['resultado']) {
             $resultado = $_GET['resultado'];
             if($resultado === '1') {
                 $alertas['exito'][] = 'El usuario fue creado correctamente'; 
+            }else if ($resultado === '2') {
+                $alertas['exito'][] = 'Tu contraseña ha sido modificada correctamente';
             }
         }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,14 +33,14 @@ class LoginController {
                         $_SESSION['login'] = true;
                         if(!$_SESSION['correo']) {
                             $id = $usuario->id;
-                            header("Location: /llenar?id=${id}");
+                            header("Location: /llenar?id=$id");
                         }else if(!$usuario->verificado) {
                             $alertas['error'][] = 'Por favor verifica tu cuenta';
                         }
                         if($usuario->admin) {
                             $_SESSION['admin'] = $usuario->admin ?? null;
                             $nombre = $usuario->nombre;
-                            header("Location: /clientes?nombre=${nombre}");
+                            header("Location: /clientes?nombre=$nombre");
                         }else {
                             header('Location: /interfaz');
                         }
@@ -87,7 +89,7 @@ class LoginController {
         $alertas = [];
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $auth = new Usuario($_POST);
-            $alertas = $auth->validarRFC($auth->rfc);
+            $alertas = $auth->validarRFC();
             if(empty($alertas)) {
                 $usuario = Usuario::where('rfc', $auth->rfc);
                 if(!$usuario || !$usuario->verificado) {
@@ -108,7 +110,34 @@ class LoginController {
         ]);
     }
     public static function recuperar(Router $router) {
-        $router->render('auth/recuperar');
+        $alertas = [];
+        $error = false;
+        $token = s($_GET['token']);
+        $usuario = Usuario::where('token', $token);
+        if(!$usuario) {
+            Usuario::setAlerta('error', 'Token no válido');
+            $error = true;
+        }
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $password = new Usuario($_POST);
+            $password->validar();
+            if(empty($alertas)) {
+                $usuario->password = $password->password;
+                $usuario->hashPassword();
+                $usuario->token = null;
+                $resultado = $usuario->guardar();
+                if($resultado) {
+                    Usuario::setAlerta('exito', 'Tu contraseña ha sido modificada correctamente');
+                    header('Location: /login?resultado=2');
+                }
+            }
+        }
+        $alertas = Usuario::getErrores();
+        $router->render('auth/recuperar', [
+            'alertas' => $alertas,
+            'error' => $error
+        ]);
+        
     }
     public static function llenar(Router $router) {
         $usuario = new Usuario;

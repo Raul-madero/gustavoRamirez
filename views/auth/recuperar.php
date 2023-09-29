@@ -2,9 +2,10 @@
     <img src="./img/logoNegro.svg" alt="">
 </picture>
 <h1 class="nombre-pagina">Olvidé mi password</h1>
-<p class="descripcion-pagina">Ingresa una nueva contraseña</p>
+<p class="descripcion-pagina">Ingresa una nueva contraseña a continuación:</p>
 <?php include_once __DIR__ . "/../templates/alertas.php" ?>
-<form action="/olvide" method="POST" class="formulario login-form">
+<?php if(!$error) : ?>
+<form  method="POST" class="formulario login-form">
     <div class="campo">
         <label for="password">Password:</label>
         <input 
@@ -18,3 +19,4 @@
 <div class="acciones">
     <a href="/login">¿Ya tienes una cuenta? Inicia sesión.</a>
 </div>
+<?php endif; ?>

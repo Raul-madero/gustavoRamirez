@@ -32,7 +32,6 @@ class ActiveRecord {
 
     // Registros - CRUD
     public function guardar() {
-        $resultado;
         if(!is_null($this->id)) {
             // actualizar
             $resultado = $this->actualizar();
@@ -73,7 +72,7 @@ class ActiveRecord {
         return array_shift( $resultado );
     }
     public static function where($columna, $valor) {
-        $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}';"; 
+        $query = "SELECT * FROM " . static::$tabla  ." WHERE $columna = '$valor';"; 
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado );
     }

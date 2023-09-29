@@ -1,6 +1,9 @@
+<picture class="picture">
+    <img src="./img/logoNegro.svg" alt="">
+</picture>
+<?php include_once __DIR__ . "/../templates/alertas.php" ?>
 <h1 class="nombre-pagina">Información</h1>
 <p class="descripcion-pagina">Completa tu información llenando el siguiente formulario</p>
-<?php include_once __DIR__ . "/../templates/alertas.php" ?>
 <form action="/llenar" method="POST" class="formulario login-form">
 <div class="campo">
         <label for="nombre">Nombre/Razón Social:</label>

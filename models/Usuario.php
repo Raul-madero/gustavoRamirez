@@ -48,14 +48,26 @@ class Usuario extends ActiveRecord {
         if(!$this->password) {
             self::$alertas['error'][] = 'La contraseña es obligatoria'; 
         }
+        if(strlen($this->password) < 8) {
+            self::$alertas['error'][] = 'La contraseña debe contener al menos 8 caracteres';
+        }
         if(!$this->telefono) {
             self::$alertas['error'][] = 'El telefono es obligatorio'; 
         }
         return self::$alertas;
     }
-    public function validarRFC($rfc) {
+    public function validarRFC() {
         if(!$this->rfc) {
             self::$alertas['error'][] = 'El rfc es obligatorio';
+        }
+        return self::$alertas;
+    }
+    public function validarPassword() {
+        if(!$this->password) {
+            self::$alertas['error'][] = 'La contraseña es obligatoria';
+        }
+        if(strlen($this->password) < 8) {
+            self::$alertas['error'][] = 'La contraseña debe contener al menos 8 caracteres';
         }
         return self::$alertas;
     }
