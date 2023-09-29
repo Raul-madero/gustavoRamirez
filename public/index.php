@@ -34,6 +34,7 @@ $router->get('/nosotros', [PagesController::class, 'nosotros']);
 $router->get('/blog', [PagesController::class, 'blog']);
 $router->get('/equipo', [PagesController::class, 'equipo']);
 $router->get('/contacto', [PagesController::class, 'contacto']);
+$router->post('/contacto', [PagesController::class, 'contacto']);
 $router->get('/servicios', [PagesController::class, 'servicios']);
 $router->get('/interfaz', [PagesController::class, 'interfaz']);
 

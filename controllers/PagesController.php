@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 use MVC\Router;
+use Classes\Email;
 use Model\Usuario;
 use Model\Clientes;
 use Model\Colaborador;
@@ -22,7 +23,44 @@ class PagesController {
         ]);
     }
     public static function contacto(Router $router) {
-        $router->render('paginas/contacto');
+        $mensaje = null;
+        $alertas = [];
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $respuestas = $_POST['contacto'];
+            if(!$respuestas['nombre']) {
+                $alertas['error'][] = 'El nombre es obligatorio';
+            }
+            if(!$respuestas['mensaje']) {
+                $alertas['error'][] = 'El mensaje es obligatorio';
+            }
+            if(!$respuestas['contacto']) {
+                $alertas['error'][] = 'Elige un medio de contacto';
+            }
+            if($respuestas['contacto'] === 'telefono') {
+                if(!$respuestas['telefono']) {
+                    $alertas['error'][] = 'El telefono es obligatorio';
+                }
+                if(!$respuestas['fecha']) {
+                    $alertas['error'][] = 'La fecha es obligatoria';
+                }
+                if(!$respuestas['hora']) {
+                    $alertas['error'][] = 'La hora es obligatoria';
+                }
+            }else if($respuestas['contacto'] === 'correo'){
+                if(!$respuestas['correo']) {
+                    $alertas['error'][] = 'El correo es obligatorio';
+                }
+            }
+            if(empty($alertas)) {
+                $email = new Email($respuestas);
+                $email->mensajeContacto();
+                $alertas['exito'][] = "Se ha enviado un mensaje con sus datos de contacto, uno de nuestros contadores se pondrá en contacto con usted";
+            }
+            
+        } 
+        $router->render('paginas/contacto',[
+            'alertas' => $alertas
+        ]);
     }
     public static function servicios(Router $router) {
         $router->render('paginas/servicios');

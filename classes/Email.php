@@ -8,11 +8,21 @@ class Email {
     public $correo;
     public $nombre;
     public $token;
-    public function __construct($correo, $nombre, $token)
+    public $mensaje;
+    public $telefono;
+    public $fecha;
+    public $hora;
+    public $contacto;
+    public function __construct($args = [])
     {
-        $this->correo = $correo;
-        $this->nombre = $nombre;
-        $this->token = $token;
+        $this->correo = $args['correo'] ?? '';
+        $this->nombre = $args['nombre'] ?? '';
+        $this->token = $args['token'] ?? '';
+        $this->mensaje = $args['mensaje'] ?? '';
+        $this->telefono = $args['telefono'] ?? null;
+        $this->fecha = $args['fecha'] ?? null;
+        $this->hora = $args['hora'] ?? null;
+        $this->contacto = $args['contacto'] ?? '';
     }
     public function enviarConfirmacion() {
         $mail = new PHPMailer();
@@ -63,6 +73,36 @@ class Email {
         $contenido .= "<a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Recupera tu contraseña</a>";
         $contenido .= "<p>Si tu no solicitaste una nueva contraseña, cambiala en tu cuenta</p>";
         $contenido .= "</html>";
+        $mail->Body = $contenido;
+        $mail->send();
+    }
+    public function mensajeContacto() {
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mailSMTPAuth = true;
+        $mail->Port = 2525;
+        $mail->Username = 'ba65bb3aa2d1b2';
+        $mail->Password = '3272d2a6a0311b';
+        $mail->SMTPSecure = 'tls';
+        $mail->setFrom('contacto@gustavoRamirez.com');
+        $mail->addAddress('contacto@gustavoRamirez.com');
+        $mail->Subject = "$this->nombre desea información";
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
+        $contenido = '<html>';
+        $contenido .= '<p>Nombre: ' . $this->nombre . '</p>';
+        $contenido .= '<p>Mensaje: ' . $this->mensaje . '</p>';
+        if($this->contacto === 'telefono') {
+            $contenido .= '<p>Eligió ser contactado por telefono</p>';
+            $contenido .= '<p>Telefono: ' . $this->telefono . '</p>';
+            $contenido .= '<p>El día: ' . $this->fecha . '</p>';
+            $contenido .= '<p>Hora: ' . $this->hora . '</p>';
+        }else {
+            $contenido .= '<p>Eligió ser contactado por email</p>';
+            $contenido .= '<p>Correo: ' . $this->correo . '</p>';
+        }
+        $contenido .= '</html>';
         $mail->Body = $contenido;
         $mail->send();
     }
