@@ -120,7 +120,7 @@ class LoginController {
         }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $password = new Usuario($_POST);
-            $password->validar();
+            $password->validarPassword();
             if(empty($alertas)) {
                 $usuario->password = $password->password;
                 $usuario->hashPassword();
