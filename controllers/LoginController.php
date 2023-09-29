@@ -37,12 +37,12 @@ class LoginController {
                         }else if(!$usuario->verificado) {
                             $alertas['error'][] = 'Por favor verifica tu cuenta';
                         }
-                        if($usuario->admin) {
+                        if($usuario->admin === '1') {
                             $_SESSION['admin'] = $usuario->admin ?? null;
                             $nombre = $usuario->nombre;
-                            header("Location: /clientes?nombre=$nombre");
+                            header("Location: /clientes");
                         }else {
-                            header('Location: /interfaz');
+                            header("Location: /interfaz");
                         }
                     }
                 }
@@ -66,7 +66,7 @@ class LoginController {
                 if($resultado->num_rows) {
                     $alertas = Usuario::getErrores();
                 }else {
-                    if($usuario->admin == 'admin') {
+                    if($usuario->admin === 'admin') {
                         $usuario->admin = 1;
                     }else {
                         $usuario->admin = 0;

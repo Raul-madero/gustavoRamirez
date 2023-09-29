@@ -1,6 +1,7 @@
 <?php
 namespace Controllers;
 use MVC\Router;
+use Model\Usuario;
 use Model\Clientes;
 use Model\Colaborador;
 
@@ -25,5 +26,17 @@ class PagesController {
     }
     public static function servicios(Router $router) {
         $router->render('paginas/servicios');
+    }
+    public static function interfaz(Router $router) {
+        $alertas = [];
+        $usuario = new Usuario($_SESSION);
+        $nombre = $usuario->nombre;
+        $rfc = $usuario->rfc;
+        // debuguear($usuario);
+        $router->render('clientes/interfaz', [
+            'alertas' => $alertas,
+            'nombre' => $nombre,
+            'rfc' => $rfc
+        ]);
     }
 }

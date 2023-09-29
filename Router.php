@@ -10,6 +10,9 @@ class Router {
         $this->rutasPOST[$url] = $fn;
     }
     public function comprobarRutas() {
+        session_start();
+        $auth = $_SESSION['login'] ?? null;
+        $rutasProtegidas = ['/clientes', '/clientes-siguiente', '/clientes-anterior', '/actualizar', 'eliminar', 'documentos', '/interfaz'];
         $urlActual = $_SERVER['PATH_INFO'] ?? '/';
         $metodo = $_SERVER['REQUEST_METHOD'];
         if($metodo === 'GET') {

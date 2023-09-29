@@ -1,7 +1,7 @@
 <main class="contenedor seccion">
         <h1>Administrador de Clientes</h1>
         <?php include_once __DIR__ . "/../templates/alertas.php" ?>
-        <h2><?php echo $admin; ?></h2>
+        <h2><?php echo $nombre; ?></h2>
         <a href="/crear" class="boton boton-verde">Nuevo Cliente</a>
 
         <h2>Clientes</h2>
