@@ -102,10 +102,10 @@ class Usuario extends ActiveRecord {
         }
     }
     public function estaVerificado() {
-        $verificdo = $this->verificado;
-        if($verificado == 0) {
+        $resultado = $this->verificado;
+        if($resultado === '0') {
             return false;
-        }else if($verificado == 1){
+        }else if($resultado === '1'){
             return true;
         }else {
             self::$alertas['error'][] = 'Verifica que tus datos sean correctos';

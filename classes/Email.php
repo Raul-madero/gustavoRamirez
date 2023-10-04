@@ -44,7 +44,7 @@ class Email {
         $mail->CharSet = 'UTF-8';
 
         $contenido = "<html>";
-        $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has creado tu cuenta en AppSalon, solo debes confirmarla en el siguiente enlace: </p>";
+        $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has creado tu cuenta en GustavoRamirezContador, solo debes confirmarla en el siguiente enlace: </p>";
         $contenido .= "<a href='" . $_ENV['PROJECT_URL'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
         $contenido .= "<p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido .= "</html>";

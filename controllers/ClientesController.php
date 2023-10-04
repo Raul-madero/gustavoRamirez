@@ -105,6 +105,7 @@ class ClientesController {
         }
     }
     public static function documentos(Router $router) {
+        
         $router->render('admin/documentos');
     }
 }

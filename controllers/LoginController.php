@@ -152,7 +152,7 @@ class LoginController {
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario->sincronizar($_POST);
             $usuario->hashPassword();
-            $email = new Email($usuario->nombre, $usuario->correo, $usuario->token);
+            $email = new Email($_POST);
             $email->enviarConfirmacion();
             $resultado = $usuario->guardar();
             if($resultado) {
