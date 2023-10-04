@@ -20,48 +20,51 @@ class LoginController {
         }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $auth = new Usuario($_POST);
-            $alertas = $auth->validar();
             if(empty($alertas)) {
                 $usuario = Usuario::where('rfc', $auth->rfc);
-                if($usuario) {
-                    if($usuario->verificarPassword($auth->password)) {
-                        if(!$usuario->correo) {
-                            $id = $usuario->id;
-                            header("Location: /llenar?id=$id");
-                        }else if(!$usuario->verificado) {
-                            $alertas['error'][] = 'Por favor verifica tu cuenta';
-                        }
+                $correo = $usuario->verificarQueTengaCorreo();
+                if(!$correo) {
+                    header("Location: /llenar?id=$usuario->id");
+                }
+                $verificado = $usuario->estaverificado();
+                if(!$verificado) {
+                    $usuario->setAlerta('error', 'Es necesario verificar tu cuenta, revisa tu correo');
+                    }
+                if($usuario && $correo && $verificado) {
+                    $login = $usuario->verificarPassword($auth->password);
+                    if($login) {
                         session_start();
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['nombre'] = $usuario->nombre;
                         $_SESSION['correo'] = $usuario->correo ?? null;
                         $_SESSION['rfc'] = $usuario->rfc;
                         $_SESSION['login'] = true;
-                        
-                        if($usuario->admin === '1') {
-                            $_SESSION['admin'] = $usuario->admin ?? null;
-                            $nombre = $usuario->nombre;
-                            header("Location: /clientes");
-                        }else {
-                            header("Location: /interfaz");
-                        }
+                    }        
+                    $admin = $usuario->esAdmin();
+                    if($admin) {
+                        $nombre = $usuario->nombre;
+                        header("Location: /clientes");
+                    }else {
+                        header("Location: /interfaz");
                     }
-                }
+                } 
             }
         }
+        $alertas = Usuario::getErrores();
         $router->render('auth/login', [
             'alertas' => $alertas
         ]);
     }
     public static function logout(Router $router) {
-        
+        session_start();
+        $_SESSION = [];
+        header('Location: /');
     }
     public static function crear(Router $router) {
         $usuario = new Usuario;
         $alertas = [];
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario->sincronizar($_POST);
-            $alertas = $usuario->validar();
             if(empty($alertas)) {
                 $resultado = $usuario->existeUsuario();
                 if($resultado->num_rows) {
@@ -183,3 +186,4 @@ class LoginController {
         ]);
     }
 }
+

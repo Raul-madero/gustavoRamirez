@@ -93,4 +93,31 @@ class Usuario extends ActiveRecord {
             return true;
         }
     }
+    public function verificarQueTengaCorreo() {
+        $correo = $this->correo;
+        if(!$correo) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+    public function estaVerificado() {
+        $verificdo = $this->verificado;
+        if($verificado == 0) {
+            return false;
+        }else if($verificado == 1){
+            return true;
+        }else {
+            self::$alertas['error'][] = 'Verifica que tus datos sean correctos';
+        }
+    }
+    public function esAdmin() {
+        if($this->admin == 1) {
+            return true;
+        }else if($this->admin == 0) {
+            return false;
+        }else {
+            self::$alertas['error'][] = 'Verifica tus datos de usuario y vuelve a intentarlo';
+        }
+    }
 }

@@ -66,6 +66,7 @@ class PagesController {
         $router->render('paginas/servicios');
     }
     public static function interfaz(Router $router) {
+        debuguear($_SESSION);
         $alertas = [];
         $usuario = new Usuario($_SESSION);
         $nombre = $usuario->nombre;

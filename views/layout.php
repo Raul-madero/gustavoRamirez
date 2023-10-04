@@ -43,7 +43,11 @@ if(!isset($inicio)) {
                         <a href="/contacto">Contacto</a>
                     </li>
                     <li class="nav-item">
+                        <?php if($auth) : ?>
+                            <a href="/logout">Cerrar Sesión</a>
+                        <?php else : ?>
                         <a href="/login">Iniciar Sesión</a>
+                        <?php endif ?>
                     </li>
                 </ul>
             </nav>
@@ -64,7 +68,11 @@ if(!isset($inicio)) {
                 <a href="/contacto">Contacto</a>
             </li>
             <li class="mobile-item">
-                <a href="/login">Iniciar Sesión</a>
+            <?php if($auth) : ?>
+                            <a href="/logout">Cerrar Sesión</a>
+                        <?php else : ?>
+                        <a href="/login">Iniciar Sesión</a>
+                        <?php endif ?>
             </li>
         </ul>
     </aside>

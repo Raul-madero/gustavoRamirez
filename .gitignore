@@ -397,3 +397,6 @@ vendor/
 
 # JetBrains Rider
 *.sln.iml
+
+/vendor/
+.env
