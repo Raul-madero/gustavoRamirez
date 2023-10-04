@@ -3,7 +3,7 @@
         'name' => 'rmade/gustavo-ramirez',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '65b8ae50af7b63992353baadae3af5922cc494f1',
+        'reference' => '5099415e09c7d5a35ccffc311abec9f55c1eceaa',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'rmade/gustavo-ramirez' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '65b8ae50af7b63992353baadae3af5922cc494f1',
+            'reference' => '5099415e09c7d5a35ccffc311abec9f55c1eceaa',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
