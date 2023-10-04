@@ -25,18 +25,19 @@ class LoginController {
                 $usuario = Usuario::where('rfc', $auth->rfc);
                 if($usuario) {
                     if($usuario->verificarPassword($auth->password)) {
+                        if(!$usuario->correo) {
+                            $id = $usuario->id;
+                            header("Location: /llenar?id=$id");
+                        }else if(!$usuario->verificado) {
+                            $alertas['error'][] = 'Por favor verifica tu cuenta';
+                        }
                         session_start();
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['nombre'] = $usuario->nombre;
                         $_SESSION['correo'] = $usuario->correo ?? null;
                         $_SESSION['rfc'] = $usuario->rfc;
                         $_SESSION['login'] = true;
-                        if(!$_SESSION['correo']) {
-                            $id = $usuario->id;
-                            header("Location: /llenar?id=$id");
-                        }else if(!$usuario->verificado) {
-                            $alertas['error'][] = 'Por favor verifica tu cuenta';
-                        }
+                        
                         if($usuario->admin === '1') {
                             $_SESSION['admin'] = $usuario->admin ?? null;
                             $nombre = $usuario->nombre;

@@ -13,12 +13,15 @@ class Router {
         session_start();
         $auth = $_SESSION['login'] ?? null;
         $rutasProtegidas = ['/clientes', '/clientes-siguiente', '/clientes-anterior', '/actualizar', 'eliminar', 'documentos', '/interfaz'];
-        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
+        $urlActual = strtok($_SERVER['REQUEST_URI'], '?') ?? '/';
         $metodo = $_SERVER['REQUEST_METHOD'];
         if($metodo === 'GET') {
             $fn = $this->rutasGET[$urlActual];
         }else {
             $fn = $this->rutasPOST[$urlActual];
+        }
+        if(in_array($urlActual, $rutasProtegidas) && !$auth) {
+            header('Location: /');
         }
         if($fn) {
             call_user_func($fn, $this);

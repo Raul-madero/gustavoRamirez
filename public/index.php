@@ -43,6 +43,8 @@ $router->get('/clientes', [ClientesController::class, 'index']);
 $router->post('/clientes', [ClientesController::class, 'index']);
 $router->get('/clientes-siguiente', [ClientesController::class, 'siguiente']);
 $router->get('/clientes-anterior', [ClientesController::class, 'anterior']);
+$router->get('/crear', [ClientesController::class, 'crear']);
+$router->post('/crear', [ClientesController::class, 'crear']);
 $router->get('/actualizar', [ClientesController::class, 'actualizar']);
 $router->post('/actualizar', [ClientesController::class, 'actualizar']);
 $router->post('/eliminar', [ClientesController::class, 'eliminar']);

@@ -37,17 +37,14 @@
             <label for="isn">Pago 2% Sobre Nominas</label>
             <input type="file" id="isn" accept="application/pdf, application/pdf" name="isn">
 
+            <label for="oimss">Opinion IMSS</label>
+            <input type="file" id="oimss" accept="application/pdf, application/pdf" name="oimss">
+
         </fieldset>
         <fieldset>
             <legend>Otros</legend>
             <label for="otros">Otros</label>
             <input type="file" id="otros" accept="application/pdf, application/pdf" name="otros">
-
-            <label for="imss">Pago de IMSS</label>
-            <input type="file" id="imss" accept="application/pdf, application/pdf" name="imss">
-
-            <label for="isn">Pago 2% Sobre Nominas</label>
-            <input type="file" id="isn" accept="application/pdf, application/pdf" name="isn">
 
         </fieldset>
 

@@ -2,7 +2,9 @@
 namespace Controllers;
 use MVC\Router;
 use Model\Cliente;
+use Model\Usuario;
 use Model\Colaborador;
+
 class ClientesController {
     public static function index(Router $router) {
         $totalClientes = count(Cliente::all());
@@ -55,7 +57,10 @@ class ClientesController {
             $cliente = new Cliente($_POST);
             $alertas = $cliente->validar();
             if(empty($alertas)) {
-                $cliente->guardar();
+                $resultado = $cliente->guardar();
+                if($resultado) {
+                    header('Location: /clientes?resultado=1');
+                }
             }
         }
         $router->render('admin/crear', [
@@ -74,7 +79,10 @@ class ClientesController {
             $cliente->sincronizar($args);
             $alertas = $cliente->validar();
             if(empty($alertas)) {
-                $cliente->guardar();
+                $resultado = $cliente->guardar();
+                if($resultado) {
+                    header('Location: /clientes?resultado=2');
+                }
             }
         }
         $router->render('admin/actualizar', [
@@ -89,7 +97,10 @@ class ClientesController {
             $id = filter_var($id, FILTER_VALIDATE_INT);
             if($id) {
                 $cliente = Cliente::find($id);
-                $cliente->eliminar();
+                $resultado = $cliente->eliminar();
+                if($resultado) {
+                    header('Location: /clientes?resultado=3');
+                }
             }
         }
     }

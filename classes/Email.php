@@ -24,14 +24,15 @@ class Email {
         $this->hora = $args['hora'] ?? null;
         $this->contacto = $args['contacto'] ?? '';
     }
+
     public function enviarConfirmacion() {
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV['EMAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'ba65bb3aa2d1b2';
-        $mail->Password = '3272d2a6a0311b';
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
         $mail->SMTPSecure = 'tls';
         //Configurar el contenido del email
         $mail->setFrom('cuentas@gustavoramirez.com');
@@ -44,7 +45,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has creado tu cuenta en AppSalon, solo debes confirmarla en el siguiente enlace: </p>";
-        $contenido .= "<a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
+        $contenido .= "<a href='" . $_ENV['PROJECT_URL'] . "/confirmar-cuenta?token=" . $this->token . "'>Confirmar Cuenta</a>";
         $contenido .= "<p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>";
         $contenido .= "</html>";
         $mail->Body = $contenido;
@@ -53,11 +54,11 @@ class Email {
     public function recuperarPassword() {
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV['EMAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'ba65bb3aa2d1b2';
-        $mail->Password = '3272d2a6a0311b';
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
         $mail->SMTPSecure = 'tls';
         //Configurar el contenido del email
         $mail->setFrom('cuentas@gustavoramirez.com');
@@ -70,7 +71,7 @@ class Email {
 
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong> Has solicitado recuperar tu contraseña, para hacerlo da click en el siguiente enlace:</p>";
-        $contenido .= "<a href='http://localhost:3000/recuperar?token=" . $this->token . "'>Recupera tu contraseña</a>";
+        $contenido .= "<a href='" . $_ENV['PROJECT_URL'] . "/recuperar?token=" . $this->token . "'>Recupera tu contraseña</a>";
         $contenido .= "<p>Si tu no solicitaste una nueva contraseña, cambiala en tu cuenta</p>";
         $contenido .= "</html>";
         $mail->Body = $contenido;
@@ -79,11 +80,11 @@ class Email {
     public function mensajeContacto() {
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
-        $mailSMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = 'ba65bb3aa2d1b2';
-        $mail->Password = '3272d2a6a0311b';
+        $mail->Host = $_ENV['EMAIL_HOST'];
+        $mail->SMTPAuth = true;
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
         $mail->SMTPSecure = 'tls';
         $mail->setFrom('contacto@gustavoRamirez.com');
         $mail->addAddress('contacto@gustavoRamirez.com');
@@ -100,7 +101,7 @@ class Email {
             $contenido .= '<p>Hora: ' . $this->hora . '</p>';
         }else {
             $contenido .= '<p>Eligió ser contactado por email</p>';
-            $contenido .= '<p>Correo: ' . $this->correo . '</p>';
+            $contenido .= '<p>Correo: ' . $this->email . '</p>';
         }
         $contenido .= '</html>';
         $mail->Body = $contenido;

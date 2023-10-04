@@ -1,16 +1,14 @@
 <?php 
-function conectarDB() : mysqli {
-$server = 'localhost';
-$user = 'root';
-$password = 'Leobebe2603$';
-$database = 'gustavoRamirez';
-    $db = new mysqli($server, $user, $password, $database);
 
-    if(!$db) {
-        echo "Error no se pudo conectar";
-        exit;
-    } 
+$db = mysqli_connect(
+    $_ENV['BD_HOST'], 
+    $_ENV['BD_USER'], 
+    $_ENV['BD_PASS'], 
+    $_ENV['BD_NAME']);
 
-    return $db;
+
     
+if(!$db) {
+    echo "Error no se pudo conectar";
+    exit;
 }
