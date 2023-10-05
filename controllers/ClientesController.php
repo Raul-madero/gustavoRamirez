@@ -105,7 +105,9 @@ class ClientesController {
         }
     }
     public static function documentos(Router $router) {
-        
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            debuguear($_FILES);
+        }
         $router->render('admin/documentos');
     }
 }

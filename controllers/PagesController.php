@@ -2,6 +2,7 @@
 namespace Controllers;
 use MVC\Router;
 use Classes\Email;
+use Model\Cliente;
 use Model\Usuario;
 use Model\Clientes;
 use Model\Colaborador;
@@ -66,9 +67,10 @@ class PagesController {
         $router->render('paginas/servicios');
     }
     public static function interfaz(Router $router) {
-        debuguear($_SESSION);
         $alertas = [];
         $usuario = new Usuario($_SESSION);
+        $cliente = Cliente::where('rfc', $usuario->rfc);
+        $id = $cliente->id;
         $nombre = $usuario->nombre;
         $rfc = $usuario->rfc;
         // debuguear($usuario);

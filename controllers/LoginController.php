@@ -13,9 +13,9 @@ class LoginController {
         if($_GET['resultado']) {
             $resultado = $_GET['resultado'];
             if($resultado === '1') {
-                $alertas['exito'][] = 'El usuario fue creado correctamente'; 
+                Usuario::setAlerta('exito', 'El usuario fue creado correctamente'); 
             }else if ($resultado === '2') {
-                $alertas['exito'][] = 'Tu contraseña ha sido modificada correctamente';
+                Usuario::setAlerta('exito', 'Tu contraseña ha sido modificada correctamente');
             }
         }
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
