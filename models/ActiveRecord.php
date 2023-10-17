@@ -180,10 +180,10 @@ class ActiveRecord {
     }
 
     // Subida de archivos
-    public function setImagen($archivo) {
+    public function setArchivo($archivo) {
         // Elimina la imagen previa
         if( !is_null($this->id) ) {
-            $this->borrarImagen();
+            $this->borrarArchivo();
         }
         // Asignar al atributo de imagen el nombre de la imagen
         if($archivo) {
@@ -192,11 +192,11 @@ class ActiveRecord {
     }
 
     // Elimina el archivo
-    public function borrarImagen() {
+    public function borrarArchivo() {
         // Comprobar si existe el archivo
-        $existeArchivo = file_exists(CARPETA_IMAGENES . $this->archivo);
+        $existeArchivo = file_exists(CARPETA_DOCUMENTOS . $this->archivo);
         if($existeArchivo) {
-            unlink(CARPETA_IMAGENES . $this->archivo);
+            unlink(CARPETA_DOCUMENTOS . $this->archivo);
         }
     }
 }
