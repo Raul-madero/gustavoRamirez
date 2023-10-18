@@ -1,0 +1,61 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.card-container__interfaz {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.cards__interfaz {
+    width: 33.33%;
+    min-width: 35rem;
+    p {
+        width: 100%;
+        text-align: center;
+    }
+}
+.card-image__interfaz {
+    width: 100%;
+    max-width: 35rem;
+}
+.contenedor-financieros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+.financieros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    width: 30rem;
+    height: 40rem;
+    border: .1rem solid v.$verde;
+    margin: 2rem 0;
+    background: rgb(41,32,22);
+    background: radial-gradient(circle, rgba(41,32,22,1) 0%, rgba(1,106,112,1) 0%, rgba(162,197,121,1) 100%);
+    h3 {
+        font-weight: 700;
+    }
+    select {
+        border: none;
+        background-color: rgba(255,255,255,0);
+        margin: .5rem 0;
+        padding: 1rem;
+        color: v.$negro;
+    }
+    input {
+        border: none;
+        background-color: v.$verde;
+        padding: 1rem;
+        border-radius: 1rem;
+        box-shadow: v.$azul 0px 3px 8px;
+    }
+    input:hover {
+        cursor: pointer;
+        background-color: v.$azul;
+        color: v.$claro;
+        box-shadow: v.$verde 0px 3px 8px;
+    }
+}

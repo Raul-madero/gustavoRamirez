@@ -8,7 +8,7 @@ class Documentos extends ActiveRecord {
     public $mes;
     public $nombre;
     public $clienteid;
-    public function __construct($nombre, $clienteid) {
+    public function __construct($nombre = null, $clienteid = null) {
         $this->id = $id ?? null;
         $this->mes = date('m') ?? '';
         $this->nombre = $nombre ?? '';

@@ -5,6 +5,7 @@ use Classes\Email;
 use Model\Cliente;
 use Model\Usuario;
 use Model\Clientes;
+use Model\Documentos;
 use Model\Colaborador;
 
 class PagesController {
@@ -73,11 +74,78 @@ class PagesController {
         $id = $cliente->id;
         $nombre = $usuario->nombre;
         $rfc = $usuario->rfc;
-        // debuguear($usuario);
         $router->render('clientes/interfaz', [
             'alertas' => $alertas,
             'nombre' => $nombre,
-            'rfc' => $rfc
+            'rfc' => $rfc,
+            'id' => $id
+        ]);
+    }
+    public static function descargar() {
+        $file = $_GET['nombre'];
+        
+        $archivo = CARPETA_DOCUMENTOS . $file;
+
+        if (file_exists($archivo)) {
+            header('Content-Description: Archivo de descarga');
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename="' . basename($archivo) . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($archivo));
+            readfile($archivo);
+            header('Location: /interfaz?');
+            exit;
+        } else {
+            echo "El archivo no existe.";
+        }
+    }
+    public static function financieros(Router $router) {
+        $id = $_GET['id'];
+        $cliente = Cliente::where('id', $id);
+        $balances = Documentos::getArchivos('balance', $id);
+        $resultados = Documentos::getArchivos('resultados', $id);
+        $anexos = Documentos::getArchivos('anexos', $id);
+        
+        $router->render('clientes/financieros', [
+            'id' => $id,
+            'cliente' => $cliente,
+            'balances' => $balances,
+            'resultados' => $resultados,
+            'anexos' => $anexos
+        ]);
+    }
+    public static function sat(Router $router) {
+        $id = $_GET['id'];
+        $cliente = Cliente::where('id', $id);
+        $csf = Documentos::getArchivos('csf', $id);
+        $odc = Documentos::getArchivos('odc', $id);
+        $declaraciones = Documentos::getArchivos('declaraciones', $id);
+        
+        $router->render('clientes/sat', [
+            'id' => $id,
+            'cliente' => $cliente,
+            'csf' => $csf,
+            'odc' => $odc,
+            'declaraciones' => $declaraciones
+        ]);
+    }
+    public static function laboral(Router $router) {
+        $id = $_GET['id'];
+        $cliente = Cliente::where('id', $id);
+        $imss = Documentos::getArchivos('imss', $id);
+        $isn = Documentos::getArchivos('isn', $id);
+        $nominas = Documentos::getArchivos('nominas', $id);
+        $oimss = Documentos::getArchivos('oimss', $id);
+        
+        $router->render('clientes/laboral', [
+            'id' => $id,
+            'cliente' => $cliente,
+            'imss' => $imss,
+            'isn' => $isn,
+            'nominas' => $nominas,
+            'oimss' => $oimss
         ]);
     }
 }

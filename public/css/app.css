@@ -1088,4 +1088,68 @@ table.clientes thead th {
   background-color: #96bd67;
   cursor: pointer;
 }
+
+.card-container__interfaz {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cards__interfaz {
+  width: 33.33%;
+  min-width: 35rem;
+}
+.cards__interfaz p {
+  width: 100%;
+  text-align: center;
+}
+
+.card-image__interfaz {
+  width: 100%;
+  max-width: 35rem;
+}
+
+.contenedor-financieros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.financieros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 30rem;
+  height: 40rem;
+  border: 0.1rem solid #a2c579;
+  margin: 2rem 0;
+  background: rgb(41, 32, 22);
+  background: radial-gradient(circle, rgb(41, 32, 22) 0%, rgb(1, 106, 112) 0%, rgb(162, 197, 121) 100%);
+}
+.financieros h3 {
+  font-weight: 700;
+}
+.financieros select {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  margin: 0.5rem 0;
+  padding: 1rem;
+  color: #292016;
+}
+.financieros input {
+  border: none;
+  background-color: #a2c579;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: #016a70 0px 3px 8px;
+}
+.financieros input:hover {
+  cursor: pointer;
+  background-color: #016a70;
+  color: #ffffdd;
+  box-shadow: #a2c579 0px 3px 8px;
+}
 /*# sourceMappingURL=app.css.map */

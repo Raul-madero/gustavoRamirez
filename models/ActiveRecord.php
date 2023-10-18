@@ -41,6 +41,11 @@ class ActiveRecord {
         }
         return $resultado;
     }
+    public static function getArchivos($tabla, $id) {
+        $query = "SELECT * FROM " . $tabla . " WHERE clienteid = $id ";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
 
     public static function all() {
         $query = "SELECT * FROM " . static::$tabla;
@@ -137,16 +142,14 @@ class ActiveRecord {
         // retornar los resultados
         return $array;
     }
-
+    
     protected static function crearObjeto($registro) {
         $objeto = new static;
-
         foreach($registro as $key => $value ) {
             if(property_exists( $objeto, $key  )) {
                 $objeto->$key = $value;
             }
         }
-
         return $objeto;
     }
 

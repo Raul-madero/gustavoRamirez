@@ -110,154 +110,134 @@ class ClientesController {
         $alertas = [];
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $idcliente = key($_POST);
-            if ($_FILES['balance']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['balance']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['balance']['tmp_name'] != "") {
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['balance']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('balance');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['anexos']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['anexos']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['anexos']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['anexos']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('anexos');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['csf']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['csf']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['csf']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['csf']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('csf');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['declaraciones']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['declaraciones']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['declaraciones']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['declaraciones']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('declaraciones');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['imss']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['imss']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['imss']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['imss']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('imss');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['isn']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['isn']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['isn']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['isn']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('isn');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['nominas']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['nominas']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['nominas']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['nominas']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('nominas');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['odc']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['odc']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['odc']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['odc']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('odc');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['oimss']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['oimss']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['oimss']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos();
+                debuguear($documento);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['oimss']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('oimss');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
-            if ($_FILES['resultados']['tmp_name']) {
-                foreach($_FILES as $key => $value) {
-                    $tabla = $key;
-                    $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
-                    $documento = new Documentos($nombreArchivo, $idcliente);
-                    if(!is_dir(CARPETA_DOCUMENTOS)) {
-                        mkdir(CARPETA_DOCUMENTOS);
-                    }
-                    move_uploaded_file($_FILES['resultados']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
-                    $resultado = $documento->guardarDocumento($tabla);
-                    if($resultado) {
-                        $documento->setAlerta('exito', 'Se cargaron los documentos correctamente');
-                    }
+            if ($_FILES['resultados']['tmp_name'] != "") {
+                $tabla = key($_FILES);
+                $nombreArchivo = md5( uniqid( rand(), true ) ) . ".pdf";
+                $documento = new Documentos($nombreArchivo, $idcliente);
+                if(!is_dir(CARPETA_DOCUMENTOS)) {
+                    mkdir(CARPETA_DOCUMENTOS);
+                }
+                move_uploaded_file($_FILES['resultados']['tmp_name'], CARPETA_DOCUMENTOS . $nombreArchivo);
+                $resultado = $documento->guardarDocumento('resultados');
+                if($resultado) {
+                    header('Location: /clientes?resultado=4');
                 } 
             }
         }

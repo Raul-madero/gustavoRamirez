@@ -23,6 +23,5 @@
     <input type="submit" class="boton" value="Iniciar Sesión">
     <div class="acciones">
         <a href="/olvide">Olvidé mi contraseña</a>
-        <a href="/crear-usuario">Crear usuario</a>
     </div>
 </form>

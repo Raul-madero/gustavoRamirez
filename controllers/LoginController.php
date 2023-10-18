@@ -10,6 +10,13 @@ class LoginController {
     public static function login(Router $router) {
         $alertas = [];
         $resultado = null;
+        if($_SESSION['login']) {
+            if($_SESSION['admin']) {
+                header('Location: /clientes');
+            }else {
+                header('Location: /interfaz');
+            }
+        }
         if($_GET['resultado']) {
             $resultado = $_GET['resultado'];
             if($resultado === '1') {
@@ -42,6 +49,7 @@ class LoginController {
                     }        
                     $admin = $usuario->esAdmin();
                     if($admin) {
+                        $_SESSION['admin'] = true;
                         $nombre = $usuario->nombre;
                         header("Location: /clientes");
                     }else {

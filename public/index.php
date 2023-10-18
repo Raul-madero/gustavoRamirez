@@ -37,6 +37,14 @@ $router->get('/contacto', [PagesController::class, 'contacto']);
 $router->post('/contacto', [PagesController::class, 'contacto']);
 $router->get('/servicios', [PagesController::class, 'servicios']);
 $router->get('/interfaz', [PagesController::class, 'interfaz']);
+$router->get('/financieros', [PagesController::class, 'financieros']);
+$router->post('/financieros', [PagesController::class, 'financieros']);
+$router->get('/sat', [PagesController::class, 'sat']);
+$router->post('/sat', [PagesController::class, 'sat']);
+$router->get('/laboral', [PagesController::class, 'laboral']);
+$router->post('/laboral', [PagesController::class, 'laboral']);
+$router->get('/descargar', [PagesController::class, 'descargar']);
+$router->post('/descargar', [PagesController::class, 'descargar']);
 
 //Clientes
 $router->get('/clientes', [ClientesController::class, 'index']);
