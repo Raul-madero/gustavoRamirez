@@ -1124,7 +1124,6 @@ table.clientes thead th {
   padding: 2rem;
   width: 30rem;
   height: 40rem;
-  border: 0.1rem solid #a2c579;
   margin: 2rem 0;
   background: rgb(41, 32, 22);
   background: radial-gradient(circle, rgb(41, 32, 22) 0%, rgb(1, 106, 112) 0%, rgb(162, 197, 121) 100%);
