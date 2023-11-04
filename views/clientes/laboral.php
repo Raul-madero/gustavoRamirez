@@ -1,4 +1,4 @@
-<a href="/interfaz" class="boton boton-verde">Volver</a>
+<a href="/interfaz" class="boton-verde">Volver</a>
 
     <?php include_once __DIR__ . "/../templates/alertas.php" ?>
 <main class="contenedor-financieros">
