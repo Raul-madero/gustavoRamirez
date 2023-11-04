@@ -30,24 +30,27 @@
     height: 25rem;
     padding: 1rem 0;
     h2 {
-        color: v.$negro;
+        color: v.$claro;
         font-size: 2rem;
+        font-weight: bold;
         margin: 0;
         padding: 0;
     }
     &-calculadora {
         background-color: v.$azul;
-        color: v.$negro;
+        color: v.$claro;
     }
     &-atomo {
         background-color: v.$verde;
         color: v.$negro;
         h2 {
             color: v.$negro;
+            font-weight: bold;
         }
     }
     &-dollar {
         background-color: v.$azul;
-        color: v.$negro;
+        color: v.$claro;
+        font-weight: bold;
     }
 }

@@ -604,14 +604,15 @@ h4 {
   padding: 1rem 0;
 }
 .card h2 {
-  color: #292016;
+  color: #ffffdd;
   font-size: 2rem;
+  font-weight: bold;
   margin: 0;
   padding: 0;
 }
 .card-calculadora {
   background-color: #016A70;
-  color: #292016;
+  color: #ffffdd;
 }
 .card-atomo {
   background-color: #A2C579;
@@ -619,10 +620,12 @@ h4 {
 }
 .card-atomo h2 {
   color: #292016;
+  font-weight: bold;
 }
 .card-dollar {
   background-color: #016A70;
-  color: #292016;
+  color: #ffffdd;
+  font-weight: bold;
 }
 
 .footer {
