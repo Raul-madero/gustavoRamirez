@@ -3,12 +3,12 @@
 .alerta {
     padding: .5rem;
     text-align: center;
-    color: v.$claro;
+    color: v.$negro;
     font-weight: bold;
     text-transform: uppercase;
     margin: 1rem 0;
     &.error {
-        background-color: red;
+        background-color: v.$rojo;
     }
     &.exito {
         background-color: v.$verde;

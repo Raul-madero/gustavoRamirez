@@ -2,7 +2,7 @@
         <h1>Administrador de Clientes</h1>
         <?php include_once __DIR__ . "/../templates/alertas.php" ?>
         <h2><?php echo $nombre; ?></h2>
-        <a href="/crear" class="boton boton-verde">Nuevo Cliente</a>
+        <a href="/crear" class="boton-verde">Nuevo Cliente</a>
 
         <h2>Clientes</h2>
         <table class="clientes">
@@ -29,7 +29,7 @@
                         <form method="POST" class="w-100" action="/eliminar">
                             <input type="hidden" name="id" value="<?php echo $cliente->id; ?>">
                             <input type="hidden" name="tipo" value="propiedad">
-                            <input type="submit" class="boton-cafe boton-clientes" id="eliminar" value="Eliminar">
+                            <input type="submit" class="boton-rojo boton-clientes" id="eliminar" value="Eliminar">
                         </form>
                         <a href="/documentos?id=<?php echo s($cliente->id); ?>" class="boton-verde boton-clientes">Subir Documentos</a>
                         <a href="/actualizar?id=<?php echo s($cliente->id); ?>" class="boton-verde boton-clientes">Actualizar</a>

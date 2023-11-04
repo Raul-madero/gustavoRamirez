@@ -1,6 +1,6 @@
 <main class="contenedor seccion">
     <h1>Ingresar Documentos</h1>
-    <a href="/clientes" class="boton boton-verde">Volver</a>
+    <a href="/clientes" class="boton-verde">Volver</a>
     <form class="formulario" action="/documentos" method="POST" enctype="multipart/form-data">
         <fieldset>
             <legend>Reportes Financieros</legend>

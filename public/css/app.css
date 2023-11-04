@@ -436,16 +436,16 @@ h4 {
 .alerta {
   padding: 0.5rem;
   text-align: center;
-  color: #ffffdd;
+  color: #292016;
   font-weight: bold;
   text-transform: uppercase;
   margin: 1rem 0;
 }
 .alerta.error {
-  background-color: red;
+  background-color: #B2302D;
 }
 .alerta.exito {
-  background-color: #a2c579;
+  background-color: #A2C579;
 }
 
 @media (min-width: 768px) {
@@ -478,7 +478,7 @@ h4 {
 }
 
 .informacion-meta span {
-  color: #016a70;
+  color: #016A70;
 }
 
 .texto-entrada a {
@@ -500,18 +500,19 @@ h4 {
   display: block;
   width: 15rem;
   height: 0.5rem;
-  background-color: #016a70;
+  background-color: #016A70;
   margin-top: 1rem;
 }
 
 .boton-verde {
-  background-color: #a2c579;
+  background-color: #A2C579;
   padding: 1.5rem 4rem;
-  color: #ffffdd;
+  color: #292016;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
   border: none;
+  border-radius: 1rem;
   transition-property: background-color;
   transition-duration: 0.3s;
   text-align: center;
@@ -523,13 +524,14 @@ h4 {
 }
 
 .boton-cafe {
-  background-color: #d2de32;
+  background-color: #D2De32;
   padding: 1.5rem 4rem;
-  color: #016a70;
+  color: #292016;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
   border: none;
+  border-radius: 1rem;
   transition-property: background-color;
   transition-duration: 0.3s;
   text-align: center;
@@ -540,11 +542,30 @@ h4 {
   cursor: pointer;
 }
 
+.boton-rojo {
+  background-color: #B2302D;
+  padding: 1.5rem 4rem;
+  color: #292016;
+  margin: 2rem auto;
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 1rem;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  display: block;
+}
+.boton-rojo:hover {
+  background-color: #9e2b28;
+  cursor: pointer;
+}
+
 .seccion-contacto h1 {
   font-size: 3.6rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: #016a70;
+  color: #016A70;
 }
 
 .contenedor-descripciones {
@@ -583,22 +604,25 @@ h4 {
   padding: 1rem 0;
 }
 .card h2 {
-  color: #ffffdd;
+  color: #292016;
   font-size: 2rem;
   margin: 0;
   padding: 0;
 }
 .card-calculadora {
-  background-color: #016a70;
+  background-color: #016A70;
+  color: #292016;
 }
 .card-atomo {
-  background-color: #a2c579;
+  background-color: #A2C579;
+  color: #292016;
 }
 .card-atomo h2 {
-  color: #016a70;
+  color: #292016;
 }
 .card-dollar {
-  background-color: #016a70;
+  background-color: #016A70;
+  color: #292016;
 }
 
 .footer {
@@ -608,7 +632,7 @@ h4 {
   align-items: center;
   gap: 2rem;
   height: 40rem;
-  background-color: #016a70;
+  background-color: #016A70;
   padding: 2rem;
 }
 .footer .logo__footer {
@@ -645,7 +669,7 @@ h4 {
   display: block;
   width: 100%;
   background-color: #ffffdd;
-  border: 1px solid #016a70;
+  border: 1px solid #016A70;
   border-radius: 1rem;
   margin-bottom: 2rem;
 }
@@ -674,13 +698,14 @@ h4 {
 }
 
 .boton {
-  background-color: #a2c579;
+  background-color: #A2C579;
   padding: 1.5rem 4rem;
   color: #ffffdd;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
   border: none;
+  border-radius: 1rem;
   transition-property: background-color;
   transition-duration: 0.3s;
   text-align: center;
@@ -702,7 +727,7 @@ h4 {
   height: 5rem;
   width: 100%;
   margin: 0;
-  background-image: linear-gradient(45deg, #a2c579, #016a70);
+  background-image: linear-gradient(45deg, #A2C579, #016A70);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -770,7 +795,7 @@ h4 {
   width: 100%;
   height: 100%;
   min-height: 30rem;
-  background-color: #016a70;
+  background-color: #016A70;
   opacity: 0.5;
 }
 
@@ -789,7 +814,7 @@ h4 {
   z-index: 10;
   height: 80rem;
   padding: 4rem;
-  background-color: #d2de32;
+  background-color: #D2De32;
   opacity: 1;
 }
 .mobile-menu ul {
@@ -825,12 +850,12 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #a2c579;
+  color: #292016;
   font-weight: bold;
   font-size: 2rem;
 }
 .paginador .flechas li svg {
-  fill: #a2c579;
+  fill: #292016;
 }
 
 .servicios {
@@ -862,7 +887,7 @@ h4 {
   align-items: center;
   width: 30rem;
   height: 25rem;
-  border: solid 0.4rem #d2de32;
+  border: solid 0.4rem #D2De32;
   border-radius: 2rem;
   box-shadow: -1.6rem -1.6rem 0.8rem #b8b8b8;
 }
@@ -875,18 +900,18 @@ h4 {
 }
 .servicios .servicio p {
   font-size: 2.4rem;
-  color: #016a70;
+  color: #016A70;
 }
 
 .somos {
   display: flex;
   flex-direction: column;
   margin: 75rem auto 0 auto;
-  background-color: #a2c579;
-  background-image: linear-gradient(180deg, #a2c579 0%, #016a70 57%);
+  background-color: #A2C579;
+  background-image: linear-gradient(180deg, #A2C579 0%, #016A70 57%);
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 0.4rem 1.6rem 0.4rem #a2c579;
+  box-shadow: 0 0.4rem 1.6rem 0.4rem #A2C579;
 }
 @media (min-width: 768px) {
   .somos {
@@ -914,7 +939,7 @@ h4 {
   font-size: 2.4rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: #016a70;
+  color: #016A70;
   text-transform: uppercase;
 }
 .somos__info p {
@@ -927,7 +952,7 @@ table.clientes {
   border-spacing: 0;
 }
 table.clientes thead {
-  background-color: #016a70;
+  background-color: #016A70;
 }
 table.clientes thead th {
   color: #ffffdd;
@@ -1039,10 +1064,10 @@ table.clientes thead th {
   font-family: "Playfair Display", serif;
   font-size: 3.2rem;
   font-weight: bold;
-  color: #d2de32;
-  background-color: #016a70;
+  color: #D2De32;
+  background-color: #016A70;
   border-radius: 1.6rem;
-  box-shadow: 0.8rem 0.2rem 0.4rem 0.2rem #016a70;
+  box-shadow: 0.8rem 0.2rem 0.4rem 0.2rem #016A70;
   max-width: 90%;
 }
 
@@ -1068,13 +1093,14 @@ table.clientes thead th {
 }
 
 .boton-equipo {
-  background-color: #a2c579;
+  background-color: #A2C579;
   padding: 1.5rem 4rem;
   color: #ffffdd;
   margin: 2rem auto;
   font-size: 2rem;
   font-weight: 700;
   border: none;
+  border-radius: 1rem;
   transition-property: background-color;
   transition-duration: 0.3s;
   text-align: center;
@@ -1140,15 +1166,16 @@ table.clientes thead th {
 }
 .financieros input {
   border: none;
-  background-color: #a2c579;
+  background-color: #A2C579;
+  color: #292016;
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: #016a70 0px 3px 8px;
+  box-shadow: #016A70 0px 3px 8px;
 }
 .financieros input:hover {
   cursor: pointer;
-  background-color: #016a70;
+  background-color: #016A70;
   color: #ffffdd;
-  box-shadow: #a2c579 0px 3px 8px;
+  box-shadow: #A2C579 0px 3px 8px;
 }
 /*# sourceMappingURL=app.css.map */

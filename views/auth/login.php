@@ -20,7 +20,7 @@
             placeholder="Tu contraseña"
             name="password">
     </div>
-    <input type="submit" class="boton" value="Iniciar Sesión">
+    <input type="submit" class="boton-verde" value="Iniciar Sesión">
     <div class="acciones">
         <a href="/olvide">Olvidé mi contraseña</a>
     </div>

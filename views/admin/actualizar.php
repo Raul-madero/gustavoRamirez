@@ -1,6 +1,6 @@
 <main class="contenedor seccion">
     <h1>Actualizar</h1>
-    <a href="/clientes" class="boton boton-verde">Volver</a>
+    <a href="/clientes" class="boton-verde">Volver</a>
 
     <?php include_once __DIR__ . "/../templates/alertas.php" ?>
 
