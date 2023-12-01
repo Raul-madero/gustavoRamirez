@@ -7,7 +7,15 @@ use Model\Documentos;
 use Model\Colaborador;
 
 class ClientesController {
+    public static function buscar(Router $router) {
+        
+        
+        header('Location: /clientes');
+    }
     public static function index(Router $router) {
+        if (isset($_GET['buscar'])) {
+            echo ("<h2>resultados de la busqueda: $_GET</h2>");
+        };
         $totalClientes = count(Cliente::all());
         $usuario = new Usuario($_SESSION);
         $nombre = $usuario->nombre;

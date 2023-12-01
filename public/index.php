@@ -60,5 +60,6 @@ $router->get('/documentos', [ClientesController::class, 'documentos']);
 $router->post('/documentos', [ClientesController::class, 'documentos']);
 
 //Colaboradores
+$router->get('/buscar', [ClientesController::class, 'buscar']);
 
 $router->comprobarRutas();

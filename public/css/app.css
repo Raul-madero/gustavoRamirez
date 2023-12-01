@@ -949,6 +949,30 @@ h4 {
   color: #292016;
 }
 
+.search {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid #6f6f6f;
+  border-radius: 50px;
+}
+.search input {
+  width: 100%;
+  border: none;
+  background: none;
+}
+.search input:active {
+  width: 100%;
+  border: none;
+  background: none;
+}
+.search button {
+  border: none;
+  background: none;
+}
+
 table.clientes {
   margin-top: 4rem;
   width: 100%;
