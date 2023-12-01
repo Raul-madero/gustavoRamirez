@@ -7,28 +7,30 @@ use Model\Documentos;
 use Model\Colaborador;
 
 class ClientesController {
-    public static function buscar(Router $router) {
-        
-        
-        header('Location: /clientes');
+    public static function buscar() {
+        $nombre = $_GET['razonsocial'];
+        header("Location: /clientes?name=$nombre");
     }
     public static function index(Router $router) {
-        if (isset($_GET['buscar'])) {
-            echo ("<h2>resultados de la busqueda: $_GET</h2>");
-        };
-        $totalClientes = count(Cliente::all());
+        if(isset($_GET['name'])) {
+            $cliente = $_GET['name'];
+            $clientes = Cliente::findName($cliente);
+        }else {
+            $totalClientes = count(Cliente::all());
+            $pagina = $_GET['pagina'];
+            if(!$pagina || $pagina < 0) {
+                $pagina = '0';
+            }else if($pagina >= $totalClientes) {
+                $pagina = ($totalClientes - 10);
+            }else {
+                $pagina = $_GET['pagina'];
+            }
+            $limite = 10;
+            $clientes = Cliente::show($pagina, $limite);
+        }
         $usuario = new Usuario($_SESSION);
         $nombre = $usuario->nombre;
-        $pagina = $_GET['pagina'];
-        if(!$pagina || $pagina < 0) {
-            $pagina = '0';
-        }else if($pagina >= $totalClientes) {
-            $pagina = ($totalClientes - 10);
-        }else {
-            $pagina = $_GET['pagina'];
-        }
-        $limite = 10;
-        $clientes = Cliente::show($pagina, $limite);
+        
         $resultado = $_GET['resultado'] ?? null;
         $alertas = [];
         if($resultado === "1") {

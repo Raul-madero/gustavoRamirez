@@ -70,6 +70,11 @@ class ActiveRecord {
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
+    public static function findName($name) {
+        $query = "SELECT * FROM " . static::$tabla . " " . "WHERE rfc = '$name';";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
     // Busca un registro por su id
     public static function find($id) {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE id = $id;";
